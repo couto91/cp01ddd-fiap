@@ -167,6 +167,15 @@ public class Main {
             
             Endereco endereco = new Endereco(rua, numero, bairro, cidade, cep);
             CNH cnh = new CNH(numeroCnh, dataVencimento);
+            
+            // Validação: CNH não pode estar vencida
+            if (!cnh.validarVencimento()) {
+                System.out.println("Erro: CNH vencida não pode ser cadastrada!");
+                System.out.println("Data de vencimento informada: " + dataStr);
+                System.out.println("Data atual: " + LocalDate.now().format(dateFormatter));
+                return;
+            }
+            
             Cliente cliente = new Cliente(nome, cpf, telefone, endereco, cnh);
             
             locadora.adicionarCliente(cliente);
