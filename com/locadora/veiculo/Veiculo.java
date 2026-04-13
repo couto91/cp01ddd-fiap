@@ -10,6 +10,7 @@ package com.locadora.veiculo;
  * - Valor da diária depende da categoria
  */
 public class Veiculo {
+    private int id;
     private String placa;
     private String marca;
     private String modelo;
@@ -17,7 +18,8 @@ public class Veiculo {
     private CategoriaVeiculo categoria;
     private boolean disponivel;
 
-    public Veiculo(String placa, String marca, String modelo, int ano, CategoriaVeiculo categoria) {
+    public Veiculo(int id, String placa, String marca, String modelo, int ano, CategoriaVeiculo categoria) {
+        this.id = id;
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
@@ -28,6 +30,10 @@ public class Veiculo {
 
     public String getPlaca() {
         return placa;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getMarca() {
@@ -60,7 +66,7 @@ public class Veiculo {
 
     public void exibir() {
         String status = disponivel ? "Disponível" : "Alugado";
-        System.out.println("Placa: " + placa + " | " + marca + " " + modelo + " (" + ano + ")" +
+        System.out.println("ID: " + id + " | Placa: " + placa + " | " + marca + " " + modelo + " (" + ano + ")" +
                          " | Categoria: " + categoria + " | R$ " + String.format("%.2f", getValorDiaria()) + "/dia | Status: " + status);
     }
 }

@@ -9,6 +9,7 @@ package com.locadora.cliente;
  * - CNH não pode estar vencida para alugar
  */
 public class Cliente {
+    private int id;
     private String nome;
     private String cpf;
     private String telefone;
@@ -16,7 +17,8 @@ public class Cliente {
     private Endereco endereco;
     private CNH cnh;
 
-    public Cliente(String nome, String cpf, String telefone, Endereco endereco, CNH cnh) {
+    public Cliente(int id, String nome, String cpf, String telefone, Endereco endereco, CNH cnh) {
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -27,6 +29,10 @@ public class Cliente {
 
     public String getNome() {
         return nome;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getCpf() {
@@ -70,7 +76,7 @@ public class Cliente {
     }
 
     public void exibir() {
-        System.out.println("Nome: " + nome + " | CPF: " + cpf + " | Tel: " + telefone);
+        System.out.println("ID: " + id + " | Nome: " + nome + " | CPF: " + cpf + " | Tel: " + telefone);
         if (!email.isEmpty()) {
             System.out.println("Email: " + email);
         }

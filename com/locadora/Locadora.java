@@ -19,12 +19,16 @@ public class Locadora {
     private ArrayList<Cliente> clientes;
     private ArrayList<Locacao> locacoes;
     private int proximoIdLocacao;
+    private int proximoIdCliente;
+    private int proximoIdVeiculo;
 
     public Locadora() {
         this.veiculos = new ArrayList<>();
         this.clientes = new ArrayList<>();
         this.locacoes = new ArrayList<>();
         this.proximoIdLocacao = 1;
+        this.proximoIdCliente = 1;
+        this.proximoIdVeiculo = 1;
     }
 
     /**
@@ -39,7 +43,7 @@ public class Locadora {
             }
         }
         veiculos.add(v);
-        System.out.println("Veículo " + v.getPlaca() + " adicionado!");
+        System.out.println("Veículo " + v.getPlaca() + " adicionado! ID: " + v.getId());
     }
 
     /**
@@ -54,7 +58,7 @@ public class Locadora {
             }
         }
         clientes.add(c);
-        System.out.println("Cliente " + c.getNome() + " cadastrado!");
+        System.out.println("Cliente " + c.getNome() + " cadastrado! ID: " + c.getId());
     }
 
     /**
@@ -205,5 +209,13 @@ public class Locadora {
             }
         }
         System.out.println("Erro: Cliente com CPF " + cpf + " não encontrado!");
+    }
+
+    public int getProximoIdCliente() {
+        return proximoIdCliente++;
+    }
+
+    public int getProximoIdVeiculo() {
+        return proximoIdVeiculo++;
     }
 }

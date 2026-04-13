@@ -78,22 +78,22 @@ public class Main {
         // Clientes de exemplo
         Endereco end1 = new Endereco("Rua A", "100", "Centro", "São Paulo", "01000-000");
         CNH cnh1 = new CNH("12345678", LocalDate.of(2027, 12, 31));
-        Cliente cliente1 = new Cliente("João Silva", "123.456.789-00", "11987654321", end1, cnh1);
+        Cliente cliente1 = new Cliente(locadora.getProximoIdCliente(), "João Silva", "123.456.789-00", "11987654321", end1, cnh1);
         locadora.adicionarCliente(cliente1);
 
         Endereco end2 = new Endereco("Rua B", "200", "Vila Nova", "São Paulo", "01100-000");
         CNH cnh2 = new CNH("87654321", LocalDate.of(2026, 6, 15));
-        Cliente cliente2 = new Cliente("Maria Santos", "987.654.321-00", "11999999999", end2, cnh2);
+        Cliente cliente2 = new Cliente(locadora.getProximoIdCliente(), "Maria Santos", "987.654.321-00", "11999999999", end2, cnh2);
         locadora.adicionarCliente(cliente2);
 
         // Veículos de exemplo
-        Veiculo veiculo1 = new Veiculo("ABC-1234", "Toyota", "Corolla", 2022, CategoriaVeiculo.EXECUTIVO);
+        Veiculo veiculo1 = new Veiculo(locadora.getProximoIdVeiculo(), "ABC-1234", "Toyota", "Corolla", 2022, CategoriaVeiculo.EXECUTIVO);
         locadora.adicionarVeiculo(veiculo1);
 
-        Veiculo veiculo2 = new Veiculo("XYZ-9999", "Fiat", "Uno", 2020, CategoriaVeiculo.ECONOMICO);
+        Veiculo veiculo2 = new Veiculo(locadora.getProximoIdVeiculo(), "XYZ-9999", "Fiat", "Uno", 2020, CategoriaVeiculo.ECONOMICO);
         locadora.adicionarVeiculo(veiculo2);
 
-        Veiculo veiculo3 = new Veiculo("BBB-5555", "Volkswagen", "Gol", 2021, CategoriaVeiculo.INTERMEDIARIO);
+        Veiculo veiculo3 = new Veiculo(locadora.getProximoIdVeiculo(), "BBB-5555", "Volkswagen", "Gol", 2021, CategoriaVeiculo.INTERMEDIARIO);
         locadora.adicionarVeiculo(veiculo3);
 
         System.out.println("Dados carregados! Clientes e veiculos ja existentes.\n");
@@ -176,7 +176,7 @@ public class Main {
                 return;
             }
             
-            Cliente cliente = new Cliente(nome, cpf, telefone, endereco, cnh);
+            Cliente cliente = new Cliente(locadora.getProximoIdCliente(), nome, cpf, telefone, endereco, cnh);
             
             locadora.adicionarCliente(cliente);
         } catch (Exception e) {
@@ -224,7 +224,7 @@ public class Main {
                 default: System.out.println("Categoria invalida!"); return;
             }
             
-            Veiculo veiculo = new Veiculo(placa, marca, modelo, ano, categoria);
+            Veiculo veiculo = new Veiculo(locadora.getProximoIdVeiculo(), placa, marca, modelo, ano, categoria);
             locadora.adicionarVeiculo(veiculo);
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
