@@ -3,6 +3,7 @@ package com.locadora;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import com.locadora.cliente.Cliente;
+import com.locadora.cliente.Endereco;
 import com.locadora.veiculo.Veiculo;
 import com.locadora.locacao.Locacao;
 
@@ -168,5 +169,41 @@ public class Locadora {
             }
         }
         return 0;
+    }
+
+    public void alterarTelefoneCliente(String cpf, String novoTelefone) {
+        for (Cliente c : clientes) {
+            if (c.getCpf().equals(cpf)) {
+                c.setTelefone(novoTelefone);
+                System.out.println("Telefone atualizado com sucesso!");
+                System.out.println("Novo telefone: " + novoTelefone);
+                return;
+            }
+        }
+        System.out.println("Erro: Cliente com CPF " + cpf + " não encontrado!");
+    }
+
+    public void alterarEmailCliente(String cpf, String novoEmail) {
+        for (Cliente c : clientes) {
+            if (c.getCpf().equals(cpf)) {
+                c.setEmail(novoEmail);
+                System.out.println("Email atualizado com sucesso!");
+                System.out.println("Novo email: " + novoEmail);
+                return;
+            }
+        }
+        System.out.println("Erro: Cliente com CPF " + cpf + " não encontrado!");
+    }
+
+    public void alterarEnderecoCliente(String cpf, Endereco novoEndereco) {
+        for (Cliente c : clientes) {
+            if (c.getCpf().equals(cpf)) {
+                c.atualizarEndereco(novoEndereco);
+                System.out.println("Endereço atualizado com sucesso!");
+                System.out.println("Novo endereço: " + novoEndereco);
+                return;
+            }
+        }
+        System.out.println("Erro: Cliente com CPF " + cpf + " não encontrado!");
     }
 }

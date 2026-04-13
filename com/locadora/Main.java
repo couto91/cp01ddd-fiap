@@ -49,6 +49,9 @@ public class Main {
                     case 7:
                         listarLocacoes();
                         break;
+                    case 8:
+                        atualizarCadastroCliente();
+                        break;
                     case 0:
                         System.out.println("\nEncerrando...");
                         scanner.close();
@@ -105,6 +108,7 @@ public class Main {
         System.out.println("5. Listar Clientes");
         System.out.println("6. Listar Veiculos");
         System.out.println("7. Listar Locacoes");
+        System.out.println("8. Atualizar Cadastro de Cliente");
         System.out.println("0. Sair");
         System.out.print("Escolha: ");
         System.out.flush();
@@ -285,5 +289,112 @@ public class Main {
     private static void listarLocacoes() {
         System.out.println();
         locadora.listarLocacoes();
+    }
+
+    private static void atualizarCadastroCliente() {
+        System.out.println("\n--- ATUALIZAR CADASTRO DE CLIENTE ---");
+        System.out.println("1. Alterar Telefone");
+        System.out.println("2. Alterar Email");
+        System.out.println("3. Alterar Endereço");
+        System.out.print("Escolha (1, 2 ou 3): ");
+        System.out.flush();
+        
+        try {
+            String entrada = scanner.nextLine().trim();
+            
+            if (!entrada.matches("^[1-3]$")) {
+                System.out.println("Erro: Digite 1 para Telefone, 2 para Email ou 3 para Endereço!");
+                return;
+            }
+            
+            int opcao = Integer.parseInt(entrada);
+            
+            switch (opcao) {
+                case 1:
+                    alterarTelefone();
+                    break;
+                case 2:
+                    alterarEmail();
+                    break;
+                case 3:
+                    alterarEndereco();
+                    break;
+                default:
+                    System.out.println("Opcao invalida!");
+            }
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
+    private static void alterarTelefone() {
+        System.out.println("\n--- ALTERAR TELEFONE ---");
+        
+        try {
+            System.out.print("CPF do cliente: ");
+            System.out.flush();
+            String cpf = scanner.nextLine().trim();
+            
+            System.out.print("Novo telefone: ");
+            System.out.flush();
+            String novoTelefone = scanner.nextLine().trim();
+            
+            locadora.alterarTelefoneCliente(cpf, novoTelefone);
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
+    private static void alterarEmail() {
+        System.out.println("\n--- ALTERAR EMAIL ---");
+        
+        try {
+            System.out.print("CPF do cliente: ");
+            System.out.flush();
+            String cpf = scanner.nextLine().trim();
+            
+            System.out.print("Novo email: ");
+            System.out.flush();
+            String novoEmail = scanner.nextLine().trim();
+            
+            locadora.alterarEmailCliente(cpf, novoEmail);
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
+    private static void alterarEndereco() {
+        System.out.println("\n--- ALTERAR ENDEREÇO ---");
+        
+        try {
+            System.out.print("CPF do cliente: ");
+            System.out.flush();
+            String cpf = scanner.nextLine().trim();
+            
+            System.out.print("Rua: ");
+            System.out.flush();
+            String rua = scanner.nextLine().trim();
+            
+            System.out.print("Numero: ");
+            System.out.flush();
+            String numero = scanner.nextLine().trim();
+            
+            System.out.print("Bairro: ");
+            System.out.flush();
+            String bairro = scanner.nextLine().trim();
+            
+            System.out.print("Cidade: ");
+            System.out.flush();
+            String cidade = scanner.nextLine().trim();
+            
+            System.out.print("CEP: ");
+            System.out.flush();
+            String cep = scanner.nextLine().trim();
+            
+            Endereco novoEndereco = new Endereco(rua, numero, bairro, cidade, cep);
+            locadora.alterarEnderecoCliente(cpf, novoEndereco);
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
     }
 }

@@ -12,6 +12,7 @@ public class Cliente {
     private String nome;
     private String cpf;
     private String telefone;
+    private String email;
     private Endereco endereco;
     private CNH cnh;
 
@@ -19,6 +20,7 @@ public class Cliente {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
+        this.email = "";
         this.endereco = endereco;
         this.cnh = cnh;
     }
@@ -43,6 +45,18 @@ public class Cliente {
         return cnh;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setTelefone(String novoTelefone) {
+        this.telefone = novoTelefone;
+    }
+
+    public void setEmail(String novoEmail) {
+        this.email = novoEmail;
+    }
+
     public void atualizarEndereco(Endereco novoEndereco) {
         this.endereco = novoEndereco;
     }
@@ -57,6 +71,9 @@ public class Cliente {
 
     public void exibir() {
         System.out.println("Nome: " + nome + " | CPF: " + cpf + " | Tel: " + telefone);
+        if (!email.isEmpty()) {
+            System.out.println("Email: " + email);
+        }
         System.out.println("Endereço: " + endereco);
         System.out.println("CNH: " + cnh);
     }
